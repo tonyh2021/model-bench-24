@@ -5,7 +5,7 @@ This project is designed to [display rankings](https://tonyh2021.github.io/model
 The data is sourced from Excel documents in the script directory. After executing the command:
 
 ```
-python scripts/excel_to_json.py AllData_rankings_with_ids_updated_Aorta.xls
+python scripts/excel_to_json.py AllData_rankings_with_ids.xls
 ```
 
 It will generate `model.json` and `performance.json` files.

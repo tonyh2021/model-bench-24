@@ -4,8 +4,7 @@ import { DataType } from "@/types";
 export function useDataType() {
   const searchParams = useSearchParams();
   const data = searchParams.get("data");
-  const dataType =
-    data === "avg" ? DataType.AVG : DataType.AllData;
+  const dataType = DataType.AllData;
 
   return dataType;
 }

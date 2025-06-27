@@ -49,7 +49,6 @@ export interface Performance {
 
 export enum DataType {
   AllData = "AllData",
-  AVG = "AVG",
 }
 
 export enum CompetitionType {

@@ -3,33 +3,15 @@
 import Image from "next/image";
 import { FaGithub, FaArrowRight } from "react-icons/fa";
 import metaData from "@/data/meta";
-import { useDataType } from "@/hooks/useDataType";
-import { DataType } from "@/types";
 
 export default function Header() {
   // Get basePath from environment variable
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-  const dataType = useDataType();
-
   const competitionTitle =
     metaData.competitionType.Segment.titleValue;
-  const dataTypeTitle =
-    dataType === DataType.AVG
-      ? metaData.dataType.avg.titleValue
-      : metaData.dataType.all.titleValue;
+  const dataTypeTitle = metaData.dataType.all.titleValue;
   const titleExtra = `: ${competitionTitle}-${dataTypeTitle} Track`;
-
-  // DataTypeLink: current competition param but opposite dataType
-  const targetDataTypeTitle =
-    dataType === DataType.AVG
-      ? metaData.dataType.all.titleValue
-      : metaData.dataType.avg.titleValue;
-  const targetDataTypeLink = `?${
-    dataType === DataType.AVG
-      ? metaData.dataType.all.link
-      : metaData.dataType.avg.link
-  }`;
 
   const title = metaData.title + titleExtra;
   const description = metaData.description;
@@ -99,13 +81,6 @@ export default function Header() {
       <div>
         <h1 className="text-left text-3xl font-semibold tracking-tight">
           {title}
-          <a
-            href={basePath + targetDataTypeLink}
-            className="ml-3 inline-flex items-center gap-1 rounded-md bg-blue-500 px-2 py-0.5 align-middle text-sm font-medium text-white transition-colors hover:bg-blue-400"
-          >
-            {targetDataTypeTitle}
-            <FaArrowRight className="ml-1 h-3 w-3" />
-          </a>
         </h1>
         <p className="mt-2 text-left text-sm leading-relaxed text-muted-foreground">
           {description}

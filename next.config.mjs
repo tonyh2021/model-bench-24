@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const isProd = process.env.NODE_ENV === "production";
-const repoName = "model-bench";
+const repoName = "model-bench-24";
 
 const nextConfig = {
   output: "export", // Static export

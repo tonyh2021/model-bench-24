@@ -10,7 +10,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 13
   },
   {
     "name": "arcadeno1",
@@ -23,7 +24,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 15
   },
   {
     "name": "automlfreiburg",
@@ -36,7 +38,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 2
   },
   {
     "name": "codingpowerunit",
@@ -49,7 +52,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 17
   },
   {
     "name": "cvhci",
@@ -62,7 +66,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 6
   },
   {
     "name": "gl",
@@ -75,7 +80,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 11
   },
   {
     "name": "hawken50-final",
@@ -88,7 +94,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 9
   },
   {
     "name": "hmi306",
@@ -101,7 +108,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 8
   },
   {
     "name": "lkeb",
@@ -114,7 +122,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 4
   },
   {
     "name": "onesam",
@@ -127,7 +136,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 19
   },
   {
     "name": "optimus",
@@ -140,7 +150,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 21
   },
   {
     "name": "organagent",
@@ -153,7 +164,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 7
   },
   {
     "name": "segseu",
@@ -166,7 +178,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 23
   },
   {
     "name": "seno",
@@ -179,7 +192,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 1
   },
   {
     "name": "skippinglegday",
@@ -192,7 +206,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 3
   },
   {
     "name": "snuhmii",
@@ -205,7 +220,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 20
   },
   {
     "name": "tai_med",
@@ -218,7 +234,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 16
   },
   {
     "name": "uestcsd",
@@ -231,7 +248,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 9
   },
   {
     "name": "ultra210",
@@ -244,7 +262,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 14
   },
   {
     "name": "waterlooviplab",
@@ -257,7 +276,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 12
   },
   {
     "name": "wloong",
@@ -270,7 +290,8 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 22
   },
   {
     "name": "yangspalworld",
@@ -283,6 +304,7 @@
     "pretraining_data_source": "-",
     "stain": "-",
     "released_date": "-",
-    "publication": "-"
+    "publication": "-",
+    "rank": 5
   }
 ]

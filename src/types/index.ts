@@ -33,6 +33,7 @@ export interface Model {
   stain: string;
   released_date: string;
   publication: string;
+  rank: number;
 }
 
 export interface Performance {

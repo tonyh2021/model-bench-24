@@ -26,15 +26,122 @@ import { EvaluationProvider } from "@/context/EvaluationContext";
 
 const TAB_VALUES = {
   OVERVIEW: "overview",
-  OVERVIEW_2: "overview_2",
+  AVERAGE: "average",
   LEADERBOARD: "leaderboard",
   PERFORMANCE: "performance",
 } as const;
+
+// Extracted tab configuration
+const TAB_CONFIG = [
+  {
+    value: TAB_VALUES.OVERVIEW,
+    label: "Overview",
+  },
+  {
+    value: TAB_VALUES.AVERAGE,
+    label: "Average",
+  },
+  {
+    value: TAB_VALUES.LEADERBOARD,
+    label: "Leaderboard",
+  },
+  {
+    value: TAB_VALUES.PERFORMANCE,
+    label: "Performance",
+  },
+];
+
+// Extracted tab content configuration
+const TAB_CONTENT_CONFIG = [
+  {
+    value: TAB_VALUES.OVERVIEW,
+    content: (
+      <div className="my-4 sm:my-6">
+        <span className="text-sm">
+          This is the overview of the competition.
+        </span>
+      </div>
+    ),
+  },
+  {
+    value: TAB_VALUES.AVERAGE,
+    content: null, // Complex content, handled separately
+  },
+  {
+    value: TAB_VALUES.LEADERBOARD,
+    content: (
+      <div className="my-4 sm:my-6">
+        <span className="text-sm">
+          This is the leaderboard of the competition.
+        </span>
+      </div>
+    ),
+  },
+  {
+    value: TAB_VALUES.PERFORMANCE,
+    content: (
+      <div className="my-4 sm:my-6">
+        <span className="text-sm">
+          This is the performance of the competition.
+        </span>
+      </div>
+    ),
+  },
+];
 
 export function Dashboard() {
   const [selectedMetrics, setSelectedMetrics] = useState<
     string[]
   >([]);
+
+  // Helper function to render TabsContent
+  const renderTabContent = (
+    tabConfig: (typeof TAB_CONTENT_CONFIG)[0],
+  ) => {
+    if (tabConfig.value === TAB_VALUES.AVERAGE) {
+      // Complex content for AVERAGE tab
+      return (
+        <TabsContent
+          key={tabConfig.value}
+          value={tabConfig.value}
+          className={"space-y-4 sm:space-y-6"}
+        >
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
+            <TaskDistributionChart chartType="taskType" />
+            <PieDataDistributionChart
+              selectedMetrics={selectedMetrics}
+            />
+          </div>
+
+          <div className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+            <ModelFilter />
+            <TaskTypeFilter />
+            <OrganFilter />
+            <MetricSelector
+              value={selectedMetrics}
+              onChange={setSelectedMetrics}
+            />
+          </div>
+          <div className="grid w-full">
+            <OverallRankBarChart
+              selectedMetrics={selectedMetrics}
+            />
+          </div>
+        </TabsContent>
+      );
+    }
+
+    // Other tabs with simple content
+    return (
+      <TabsContent
+        key={tabConfig.value}
+        value={tabConfig.value}
+        className={"space-y-4 sm:space-y-6"}
+      >
+        {tabConfig.content}
+      </TabsContent>
+    );
+  };
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -45,107 +152,29 @@ export function Dashboard() {
           <Tabs defaultValue={TAB_VALUES.OVERVIEW}>
             <div className="w-full overflow-x-auto">
               <TabsList className="flex w-auto min-w-max space-x-0.5 rounded-xl border border-gray-100 bg-gray-50">
-                <TabsTrigger
-                  value={TAB_VALUES.OVERVIEW}
-                  className="whitespace-nowrap rounded-lg px-2 py-1.5 text-gray-600 transition-all hover:bg-gray-100/70 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm"
-                >
-                  <span className="text-sm font-medium">
-                    Overview
-                  </span>
-                </TabsTrigger>
-                {/* <TabsTrigger
-              value={TAB_VALUES.OVERVIEW_2}
-              className="whitespace-nowrap rounded-lg px-2 py-1.5 text-gray-600 transition-all hover:bg-gray-100/70 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm sm:px-6 sm:py-2"
-            >
-              <span className="text-xs font-medium sm:text-sm">
-                Overview
-              </span>
-            </TabsTrigger> */}
-                {/* <TabsTrigger
-              value={TAB_VALUES.LEADERBOARD}
-              className="whitespace-nowrap rounded-lg px-2 py-1.5 text-gray-600 transition-all hover:bg-gray-100/70 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm sm:px-6 sm:py-2"
-            >
-              <span className="text-xs font-medium sm:text-sm">
-                Leaderboard
-              </span>
-            </TabsTrigger>
-            <TabsTrigger
-              value={TAB_VALUES.PERFORMANCE}
-              className="whitespace-nowrap rounded-lg px-2 py-1.5 text-gray-600 transition-all hover:bg-gray-100/70 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm sm:px-6 sm:py-2"
-            >
-              <span className="text-xs font-medium sm:text-sm">
-                Performance
-              </span>
-            </TabsTrigger> */}
+                {TAB_CONFIG.map((tab) => (
+                  <TabsTrigger
+                    key={tab.value}
+                    value={tab.value}
+                    className={
+                      "w-[120px] whitespace-nowrap rounded-lg px-2 py-1.5 text-gray-600 transition-all hover:bg-gray-100/70 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm"
+                    }
+                  >
+                    <span
+                      className={
+                        "text-xs font-medium sm:text-sm"
+                      }
+                    >
+                      {tab.label}
+                    </span>
+                  </TabsTrigger>
+                ))}
               </TabsList>
             </div>
 
-            <TabsContent
-              value={TAB_VALUES.OVERVIEW}
-              className="space-y-4 sm:space-y-6"
-            >
-              <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
-                <TaskDistributionChart chartType="taskType" />
-                <PieDataDistributionChart
-                  selectedMetrics={selectedMetrics}
-                />
-              </div>
-
-              <div className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-                <ModelFilter />
-                <TaskTypeFilter />
-                <OrganFilter />
-                <MetricSelector
-                  value={selectedMetrics}
-                  onChange={setSelectedMetrics}
-                />
-              </div>
-              <div className="grid w-full">
-                <OverallRankBarChart
-                  selectedMetrics={selectedMetrics}
-                />
-              </div>
-            </TabsContent>
-
-            <TabsContent
-              value={TAB_VALUES.OVERVIEW_2}
-              className="space-y-4 sm:space-y-6"
-            >
-              <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
-                <TaskDistributionChart chartType="taskType" />
-                <PieDataDistributionChart
-                  selectedMetrics={selectedMetrics}
-                />
-              </div>
-
-              <div className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-                <ModelFilter />
-                <TaskTypeFilter />
-                <OrganFilter />
-                <MetricSelector
-                  value={selectedMetrics}
-                  onChange={setSelectedMetrics}
-                />
-              </div>
-              <div className="grid w-full">
-                <OverallRankBarChart
-                  selectedMetrics={selectedMetrics}
-                />
-              </div>
-            </TabsContent>
-
-            <TabsContent value={TAB_VALUES.LEADERBOARD}>
-              <div className="my-4 sm:my-6">
-                <LeaderboardTable />
-              </div>
-            </TabsContent>
-
-            <TabsContent
-              value={TAB_VALUES.PERFORMANCE}
-              className="space-y-4 sm:space-y-6"
-            >
-              <PerformanceContent />
-            </TabsContent>
+            {TAB_CONTENT_CONFIG.map((tabConfig) =>
+              renderTabContent(tabConfig),
+            )}
           </Tabs>
 
           <Footer />
